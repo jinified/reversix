@@ -1,0 +1,5 @@
+Size: 8,8			# x,y
+White: { d4,e5 }	# This is the standard starting position
+Black: { d5,e4 }	# for Othello, but you can set any position
+Color: Black # it can be Black or White
+Timeout: 10 # your solution is allowed to run for this amount of time

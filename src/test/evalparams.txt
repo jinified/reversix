@@ -1,0 +1,4 @@
+MaxDepth: 8			# Maximum depth of following moves
+MaxBoards: 10000000		# maximum number of boards to evaluate
+CornerValue: 42			# Parameter for the board evaluator
+EdgeValue: 4			# Parameter for the board evaluator
