@@ -1,7 +1,7 @@
 CC=mpicxx
-CFLAGS=-std=c++11 -Wall -g
+CFLAGS=-std=c++11 -Wall -g -fopenmp
 
-TARGETS = reversi
+TARGETS = othellox
 OBJS = utils.o type.o negascout.o evaluate.o
 
 all: $(TARGETS)
@@ -18,7 +18,7 @@ type.o: type.cpp
 utils.o: utils.cpp
 	$(CC) $(CFLAGS) -o $@ -c $^
 
-reversi: reversi.cpp $(OBJS)
+othellox: othellox.cpp $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $+
 
 .PHONY: all clean

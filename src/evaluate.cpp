@@ -104,6 +104,5 @@ int getScore(char side, Board *board) {
         }
     }
     int score = ourDiscs - oppDiscs + getMobilityScore(side, board)
-        + getStabilityScore(side, board) + getEdgeScore(side, board)
-        + getFrontierScore(side, board);
+        + getStabilityScore(side, board) + getEdgeScore(side, board);
 }

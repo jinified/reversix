@@ -1,6 +1,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <omp.h>
 
 #include "type.h"
 #include "utils.h"
@@ -110,6 +111,8 @@ Board::~Board() {
 
 Board* Board::copy() {
     Board *newBoard = new Board(maxRow, maxCol);
+    # pragma omp parallel
+    # pragma omp for
     for (int i=0; i < maxRow; i++) {
         for (int j=0; j < maxCol; j++) {
             newBoard->board[i][j] = this->board[i][j];

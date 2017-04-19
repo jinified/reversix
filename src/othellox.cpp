@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <omp.h>
 
 #include "type.h"
 #include "utils.h"
@@ -25,7 +26,9 @@ int main(int argc, char **argv) {
     vector<Move> moves = initialBoard->getLegalMoves('b');
 
     // Initial board condition
-    MoveScore bestMove = negascout(initialBoard, 0, 5, -INF, INF, gameInfo.side);
+    Timer timer(true);
+    MoveScore bestMove = negascout(initialBoard, 0, 8, -INF, INF, gameInfo.side);
+    printf("Elapsed: %f\n", timer.elapsed());
 
     // After move
     delete initialBoard;

@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <omp.h>
 
 #define MAX_POSLIST 2704
 #define INF 9999999
