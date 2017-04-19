@@ -2,11 +2,14 @@ CC=mpicxx
 CFLAGS=-std=c++11 -Wall -g
 
 TARGETS = reversi
-OBJS = utils.o type.o board.o
+OBJS = utils.o type.o negascout.o evaluate.o
 
 all: $(TARGETS)
 
-board.o: board.cpp
+negascout.o: negascout.cpp
+	$(CC) $(CFLAGS) -o $@ -c $^
+
+evaluate.o: evaluate.cpp
 	$(CC) $(CFLAGS) -o $@ -c $^
 
 type.o: type.cpp

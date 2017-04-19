@@ -7,23 +7,50 @@
 #include <vector>
 
 #define MAX_POSLIST 2704
+#define INF 9999999
 
-enum Side {
-    BLACK, WHITE
-};
 
 /*
  * Represents a legal move in Othello
 */
 struct Move {
-    int x;
-    int y;
+    int x = -1;
+    int y = -1;
+    Move() {};
     Move(const std::string  &str);
     Move(int x, int y);
 
     // Convert back to game notation
     std::string toString();
 };
+
+struct MoveScore {
+    Move move;
+    int score;
+    MoveScore(Move move, int score);
+};
+
+struct Board {
+    char **board;
+    int maxRow;
+    int maxCol;
+
+    Board(int row, int col);
+    ~Board();
+    Board *copy();
+    void fillBoard(char side, std::vector<Move> moves);
+
+    char getOppSide(char side);
+    bool onBoard(int row, int col);
+    bool isExist(char side, int row, int col);
+    bool isLegalMove(char side, const Move& m);
+    std::vector<Move> getLegalMoves(char side);
+    void doMove(char side, const Move& m);
+
+    void printBoard();
+};
+
+std::vector<Move> getOrderedMoves(char side, Board *board);
 
 /*
  * Describes parameters of evaluation function
@@ -47,7 +74,7 @@ struct GameInfo {
    int row;
    int col;
    int timeout;
-   Side side;
+   char side;
    std::vector<Move> whitePosList;
    std::vector<Move> blackPosList;
 
